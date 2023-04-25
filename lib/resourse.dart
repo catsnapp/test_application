@@ -67,8 +67,8 @@ List<String> myCode1 = [
 ];
 
 class MyAccount {
-  late String name = 'Иван';
-  late String lastName = 'Иванов';
+  late String name = 'Петя';
+  late String lastName = 'Петров';
   late String phone;
   late String email;
   late String birthdayDate;
