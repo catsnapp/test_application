@@ -1,6 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:test_application/resourse.dart';
+import 'package:test_application/view/account_view.dart';
+import 'package:test_application/view/setting_view.dart';
+import 'package:test_application/theme/theme.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,22 +13,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
-  static final List<Widget> _widgetOptions = <Widget>[
-    const Center(
-      child: Text(
-        'Index 0: Home',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-      ),
-    ),
+  final List _widgetOptions = [
+    SettingView(),
     _bodyBuild(),
-    const Center(
-      child: Text(
-        'Index 1: Business',
-        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-      ),
-    ),
+    AccountView(),
   ];
 
   Widget build(BuildContext context) {
@@ -33,26 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         extendBody: true,
         appBar: AppBar(
-          title: const Text(
-            'Мои коды',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 30.0,
-            ),
-          ),
-          toolbarHeight: 80,
-          backgroundColor: Colors.white,
-          elevation: 0,
+          title: const Text('Мои коды'),
           actions: [
             IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.notification_add),
-              color: Colors.black,
-              iconSize: 40.0,
-            )
+                onPressed: () {}, icon: const Icon(Icons.notification_add))
           ],
         ),
-        //appBAR------------------------------------
         body: SingleChildScrollView(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
@@ -137,7 +116,7 @@ Widget _bodyBuild() {
             OutlinedButton(
               onPressed: () {},
               style: style,
-              child: Text(
+              child: const Text(
                 'Избранное',
                 style: textStyle,
               ),
@@ -146,7 +125,7 @@ Widget _bodyBuild() {
             OutlinedButton(
               onPressed: () {},
               style: style,
-              child: Text(
+              child: const Text(
                 'Машина',
                 style: textStyle,
               ),
@@ -155,7 +134,7 @@ Widget _bodyBuild() {
             OutlinedButton(
               onPressed: () {},
               style: style,
-              child: Text(
+              child: const Text(
                 'Добавить коды',
                 style: textStyle,
               ),
@@ -163,8 +142,6 @@ Widget _bodyBuild() {
           ],
         ),
       ),
-      //------------------------------верхни листвью-------------------
-      // const Divider(height: 10.0),
       const SizedBox(
         height: 20,
         width: double.maxFinite,
@@ -173,12 +150,12 @@ Widget _bodyBuild() {
         alignment: Alignment.center,
         width: 350.0,
         height: 450.0,
-        // color: Color.fromARGB(255, 253, 0, 0),
         child: ListView.builder(
           itemCount: myCode1.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 3.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 3.0, vertical: 3.0),
               child: Card(
                 color: (colorArray[index]).withOpacity(0.2),
                 shape: RoundedRectangleBorder(
@@ -188,7 +165,7 @@ Widget _bodyBuild() {
                   width: double.infinity,
                   height: 77.0,
                   child: Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: Row(
                       children: [
                         Container(
@@ -218,7 +195,7 @@ Widget _bodyBuild() {
                                   .titleMedium
                                   ?.copyWith(
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 27, 24, 24),
+                                    color: Colors.black,
                                   ),
                             )
                           ],
@@ -244,9 +221,6 @@ final style = OutlinedButton.styleFrom(
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(20.0),
   ),
-  side: BorderSide(width: 2, color: Colors.black),
-  //textStyle: TextStyle(color: Colors.black),
+  side: const BorderSide(width: 2, color: Colors.black),
 );
-final textStyle = const TextStyle(color: Colors.black);
-
-int _selectedIndex = 0;
+const textStyle = TextStyle(color: Colors.black);

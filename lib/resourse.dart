@@ -65,3 +65,12 @@ List<String> myCode1 = [
   'Мой кот',
   'Моя жопа',
 ];
+
+class MyAccount {
+  late String name = 'Иван';
+  late String lastName = 'Иванов';
+  late String phone;
+  late String email;
+  late String birthdayDate;
+  late String gender;
+}
